@@ -1,6 +1,9 @@
-from django.shortcuts import HttpResponse
+from django.shortcuts import render
 
 
 # Create your views here.
 def index(request):
-    return HttpResponse('不知道啊')
+    context = {
+        'name': '姓名啊',
+    }
+    return render(request, 'book/index.html', context)

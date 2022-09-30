@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="StylelintConfiguration" allowJS="true">
+    <config-file value="D:/Environment/node/node_global/node_modules/stylelint-config-standard/node_modules/stylelint-config-recommended/package.json" />
+  </component>
+</project>

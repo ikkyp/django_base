@@ -6,6 +6,9 @@ class BookInfo(models.Model):
     # 创建字段，字段类型...
     name = models.CharField(max_length=20, verbose_name='名称')
 
+    def __str__(self):
+        return self.name
+
 
 class PeopleInfo(models.Model):
     name = models.CharField(max_length=20, verbose_name='名称')

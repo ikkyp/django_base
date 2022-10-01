@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from book.models import BookInfo
+from book.models import BookInfo, PeopleInfo
 
 
 # Create your views here.
@@ -42,4 +42,20 @@ def index(request):
     # from django.db.models import Q
     # BookInfo.objects.filter(Q(readcount__gt=10) | Q(commentcount__lt=50))
 
+    # 关联查询
+    # 1. 通过书名查询人物
+    # book = BookInfo.objects.get(pk=1)
+    # print(book.peopleinfo_set.all())
+
+    # 2. 通过人物查询书籍
+    # person = PeopleInfo.objects.get(pk=1)
+    # print(person.book.name)
+
+    # 关联过滤查询(书籍查询人物)
+    BookInfo.objects.filter(peopleinfo__name='郭靖')
+    BookInfo.objects.filter(peopleinfo__description__contains='八')
+
+    # 人物查询书籍
+    PeopleInfo.objects.filter(book__name='郭靖')
+    PeopleInfo.objects.filter(book__commentcount__gt=30)
     return render(request, 'book/index.html', context)

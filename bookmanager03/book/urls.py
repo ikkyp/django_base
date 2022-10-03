@@ -1,9 +1,10 @@
 from django.urls import path
 from django.urls.converters import register_converter
 
-from book.views import create_book, shop, register, jso, response, set_cookie, get_cookie, set_session
-from book.views import get_session
-
+from book.views import LoginView
+from book.views import create_book, shop, register, jso, response, set_cookie, get_cookie
+from book.views import get_session, set_session
+from book.views import OrderView
 
 # 定义转换器
 class MobileConverter:
@@ -29,4 +30,8 @@ urlpatterns = [
     path('get_cookie/', get_cookie),
     path('set_session/', set_session),
     path('get_session/', get_session),
+
+    # 类视图
+    path('login/', LoginView.as_view()),
+    path('login1/', OrderView.as_view()),
 ]

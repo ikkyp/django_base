@@ -1,5 +1,6 @@
 import json
 
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import HttpResponse
 
 from book.models import BookInfo
@@ -71,7 +72,28 @@ def get_session(request):
     username = request.session.get('username')
 
     content = '{}, {}'.format(user_id, username)
-    
+
     # 设置session过期时间
     request.session.set_expiry(3600)
     return HttpResponse(content)
+
+
+from django.views import View
+
+
+class LoginView(View):
+
+    def get(self, request):
+        return HttpResponse("get")
+
+    def post(self, request):
+        return HttpResponse("post")
+
+
+class OrderView(LoginRequiredMixin, View):
+
+    def get(self, request):
+        return HttpResponse("登陆成功")
+
+    def post(self, request):
+        return HttpResponse("登陆成功")

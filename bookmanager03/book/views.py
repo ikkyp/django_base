@@ -50,7 +50,7 @@ def set_cookie(request):
     res.set_cookie('name', username, max_age=60 * 60)
 
     # 删除cookie
-    res.delete_cookie('name')
+    # res.delete_cookie('name')
     return res
 
 
